@@ -1,0 +1,5 @@
+body{font-family: 'Sumana', serif;}
+nav, a, span { padding-left:5px;}
+.blue{color: rgba(0, 144, 255, 1);}
+.navbar-header{display:inline-block!important;}
+.img-logo{max-height: 40px;display: inline-block!important;margin-top: -8px;}
