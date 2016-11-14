@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  $centre = $_SESSION['centre'];
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,27 +20,28 @@
       </div>
     </nav>
       <div class="container">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="well">
-            <h3 class="text-center blue">Nueva Asistencia</h3>
-            <form style="margin-top:20px;">
-              <div class="form-group">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+          <div>
+            <h3 class="text-center blue">Nueva Asistencia en: <small><?php echo $centre; ?></small></h3>
+            <form style="margin-top:20px;" action="asistenciaUp_POST.php" method="POST">
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-l12">
                 <label for="nombre">Nombre del Beneficiario</label>
-                <input type="text" name="nombre" class="form-control">
+                <input type="text" name="name" class="form-control" required id="name">
               </div>
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label for="address">Domicilio</label>
+                <input type="text" name="address" class="form-control" required id="address">
+              </div>
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label for="family">Int. de Familia</label>
+                <input type="number" name="family" class="form-control" required id="family">
+              </div>
+              <input type="submit" class="btn btn-danger pull-right">
             </form>
-            <button type="submit" href="" class="btn btn-danger pull-right">Guardar</button>
-            <button id="cancel" href="" class="btn btn-danger pull-left">Cancelar</button>
           </div>
         </div>
       </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $(':input').val();
-        $(':button').hide();
-      });
-    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

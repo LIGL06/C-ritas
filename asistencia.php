@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  $centre = $_SESSION['centre'];
+  $today = date('Y-m-d');
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,12 +21,41 @@
       </div>
     </nav>
       <div class="container">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="well">
-            <h1 class="text-center blue">Asistencia diaria</h1>
-            <a href="asistenciaUp.php" class="btn btn-info pull-right">Crear nueva</a>
-            <a href="asistenciaFind.php" class="btn btn-info pull-left">Filtrar asistencias</a>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+          <div>
+            <h1 class="text-center blue" id="date">Asistencia del: <small><?php echo $today;?></small> en: <small><?php echo $centre;?></small></h1>
           </div>
+          <?php
+               include('conection.php');
+               $query = $conection->query("SELECT * FROM asistance WHERE date LIKE '%$today%' AND centre LIKE '%$centre%'");
+               if ($query->num_rows>0) {
+                 echo'
+                 <table class=" table table-responsive table-stripped">
+                   <thead>
+                     <tr>
+                       <th>N°</th>
+                       <th>Nombre</th>
+                       <th>Domicilio</th>
+                       <th>Int. de Familia</th>
+                       <th>Fecha</th>
+                       <th>Centro de reparto</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                 ';
+                 while ($row = $query->fetch_assoc()) {
+                   echo '<tr><td>'.$row['number'].'</td><td>'.$row['name'].'</td><td>'.$row['address'].'</td><td>'.$row['family'].'</td><td>'.$row['date'].'</td><td>'.$row['centre'].'</td></tr>';
+                 }
+                 echo '</tbody></table>';
+               }else {
+                 echo '<h2>0 Resultados...</h2>';
+               }
+               $conection->close();
+            ?>
+            <div class="form-group">
+              <a href="asistenciaUp.php" class="btn pull-right blue">Crear nueva</a>
+              <a href="asistenciaFind.php" class="btn pull-left blue">Filtrar asistencias</a>
+            </div>
         </div>
       </div>
 
