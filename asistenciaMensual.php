@@ -53,7 +53,6 @@
             ?>
             <div class="form-group">
               <a href="asistenciaUp.php" class="btn pull-right blue">Crear nueva</a>
-              <a href="mensual.php" class="btn text-center blue col-md-offset-4">Mensual</a>
               <a href="asistenciaFind.php" class="btn pull-left blue">Regresar</a>
             </div>
         </div>

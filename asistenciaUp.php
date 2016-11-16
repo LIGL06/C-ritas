@@ -29,14 +29,15 @@
                 <input type="text" name="name" class="form-control" required id="name">
               </div>
               <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <label for="address">Domicilio</label>
-                <input type="text" name="address" class="form-control" required id="address">
+                <label for="address">Edad</label>
+                <input type="number" name="address" class="form-control" required id="address">
               </div>
               <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <label for="family">Int. de Familia</label>
+                <label for="family">Desayunos</label>
                 <input type="number" name="family" class="form-control" required id="family">
               </div>
-              <input type="submit" class="btn btn-danger pull-right">
+              <input type="submit" class="btn btn-danger pull-right" value="Guardar">
+              <a href="asistencia.php" class="btn btn-danger pull-left">Cancelar</a>
             </form>
           </div>
         </div>

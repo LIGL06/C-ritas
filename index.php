@@ -89,7 +89,8 @@
                   </div>
                 </div>
                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <input type="submit" value="Guardar" class="btn btn-info pull-right">
+                  <input type="submit" value="Ir" class="btn btn-info pull-right">
+                  <a href="mensualTotal.php" class="btn pull-left">Reporte Mensual</a>
                 </div>
               </form>
             </div>

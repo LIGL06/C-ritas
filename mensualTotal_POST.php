@@ -1,6 +1,7 @@
 <?php
   session_start();
   $centre = $_SESSION['centre'];
+  $month = $_POST['month'];
   $today = date('Y-m-d');
  ?>
 <!DOCTYPE html>
@@ -23,11 +24,12 @@
       <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
           <div>
-            <h1 class="text-center blue" id="date">Asistencia en: <small><?php echo $centre;?></small></h1>
+            <h1 class="text-center blue" id="date">Asistencia de: <small><?php echo $month ?></small></h1>
           </div>
           <?php
+              $sum = 0;
                include('conection.php');
-               $query = $conection->query("SELECT * FROM asistance WHERE centre LIKE '%$centre%'");
+               $query = $conection->query("SELECT * FROM asistance WHERE date LIKE '%$month%'");
                if ($query->num_rows>0) {
                  echo'
                  <table class=" table table-responsive table-stripped">
@@ -43,8 +45,10 @@
                    <tbody>
                  ';
                  while ($row = $query->fetch_assoc()) {
+                   $sum+=$row['family'];
                    echo '</td><td>'.$row['name'].'</td><td>'.$row['address'].'</td><td>'.$row['family'].'</td><td>'.$row['date'].'</td><td>'.$row['centre'].'</td></tr>';
                  }
+                 echo '</td><td>'.'</td><td>'.'</td><td>'.$sum.'</td><td>'.'</td><td>'.'</td></tr>';
                  echo '</tbody></table>';
                }else {
                  echo '<h2>0 Resultados...</h2>';
@@ -52,8 +56,6 @@
                $conection->close();
             ?>
             <div class="form-group">
-              <a href="asistenciaUp.php" class="btn pull-right blue">Crear nueva</a>
-              <a href="mensual.php" class="btn text-center blue col-md-offset-4">Mensual</a>
               <a href="asistenciaFind.php" class="btn pull-left blue">Regresar</a>
             </div>
         </div>
